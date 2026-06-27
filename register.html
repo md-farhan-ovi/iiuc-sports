@@ -53,6 +53,10 @@
             cursor: pointer;
         }
 
+        .textBox{
+            width: 285px !important;
+        }
+
     </style>
 
     <title>Login Page</title>
@@ -61,7 +65,11 @@
     <form class="loginContent d-flex justify-content-center align-items-center flex-column m-5 p-5">
         <div class="text-center mb-4">
             <i class="bi bi-person-circle display-4 text-primary logo"></i>
-            <h2 class="fw-bold mt-2 glow-text">USER LOGIN</h2>
+            <h2 class="fw-bold mt-2 glow-text">REGISTER</h2>
+        </div>
+        <div class="mb-3">
+            <label for="inName" class="form-label text-white">Your Name</label>
+            <input type="text" class="textBox form-control border-0 bg-secondary" id="inName" aria-describedby="emailHelp" placeholder="Enter Your Name">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label text-white">Email address</label>
@@ -72,40 +80,39 @@
             <label for="exampleInputPassword1" class="form-label text-white">Password</label>
             <input type="password" class="form-control border-0 pass bg-secondary" id="exampleInputPassword1" placeholder="Password">
         </div>
-        <div class="mb-3 form-check passBox">
-            <div>
-                <input type="checkbox" class="form-check-input bg-secondary border-0" id="exampleCheck1">
-                <label class="form-check-label text-white-50" for="exampleCheck1">Remember me</label>
-            </div>
-            <div>
-                <p class="text-primary">Forgot password?</p>
-            </div>
+        <div class="mb-3">
+            <label for="cnPass" class="form-label text-white">Confirm Password</label>
+            <input type="password" class="form-control border-0 pass bg-secondary" id="cnPass" placeholder="Password">
         </div>
-        <button type="button" class="btn btn-primary loginButton fw-bold" onclick="loginProcess()">Login</button>
-        <div class="text-white-50 mt-3">Don't have an account? <span class="text-primary reg" onclick="signUp()">Register</span></div>
+
+        <button type="button" class="btn btn-primary loginButton fw-bold my-4" onclick="signUp()">Sign Up</button>
+
         <div id="display" class="text-danger mt-2"></div>
     </form>
 
     <script>
-        function loginProcess(){
-            let email = document.getElementById("exampleInputEmail1").value;
-            let pass = document.getElementById("exampleInputPassword1").value;
-
-            let savedEmail = localStorage.getItem("emailSv");
-            let savedPassword = localStorage.getItem("passSv");
-        
-            if(email === savedEmail && pass === savedPassword){
-                localStorage.setItem("isLoggedIn", "true");
-                window.location.href="home.html";
-            }
-            else{
-                localStorage.setItem("isLoggedIn", "false");
-                document.getElementById("display").innerHTML = "<i class='bi bi-x-circle-fill me-2'></i>Wrong Email or Password";
-            }
-        }
 
         function signUp(){
-            window.location.href = "register.html";
+            let email = document.getElementById("exampleInputEmail1").value;
+            let pass = document.getElementById("exampleInputPassword1").value; 
+            let nameBox = document.getElementById("inName").value;
+            let confirmPass = document.getElementById("cnPass").value;   
+            let result = document.getElementById("display");
+            
+            if(email !== "" && pass !== "" && nameBox !== "" && confirmPass !== ""){
+                if(pass === confirmPass){
+                    localStorage.setItem("emailSv",email);
+                    localStorage.setItem("passSv", pass);
+                    localStorage.setItem("accName", nameBox);
+                    window.location.href = "index.html";
+                }
+                else{
+                    result.innerHTML = "<i class='bi bi-x-circle-fill me-2'></i>Passwords do not match.";
+                }
+            }
+            else{
+                result.innerHTML = "<i class='bi bi-x-circle-fill me-2'></i>Please complete the form to continue."
+            }
         }
     </script>
     

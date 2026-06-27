@@ -64,6 +64,25 @@
             transform: translateY(-5px);
         }
 
+        .mainRule div{
+            border-bottom: 2px solid #222222;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mainRule p{
+            margin: 0px;
+        }
+
+        .rule-content{
+            background-color: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            box-shadow: 0px 0px 20px rgba(28, 126, 255, 0.15);
+
+            margin-top: 80px !important;
+            margin-bottom: 80px !important;
+        }
+
     </style>
 </head>
 <body>
@@ -73,6 +92,7 @@
             <div>
                 <button class="btn btn-outline-primary mx-2" onclick="aboutUs()">About Us</button>
                 <button class="btn btn-primary" onclick="logOut()">Logout</button>
+                <button class="btn btn-outline-primary mx-2" id="acc"></button>
             </div>
         </div>
     </nav>
@@ -130,7 +150,7 @@
 
     <div class="m-5">
         <div class="row g-4 justify-content-around m-4">
-            <div class="glowCard col-md-4 text-center text-white w-10 h-100 p-3 rounded-3">
+            <div class="glowCard col-md-4 text-center text-white w-10 h-100 p-3 rounded-3" onclick="scrollR()">
                 <i class="bi bi-journal-text text-primary display-6"></i>
                 <h5 class="fw-bold">Rule Book</h5>
                 <p class="text-white-50 small">Download the official tournament guidelines and player eligibility criteria.</p>
@@ -140,7 +160,7 @@
                 <h5 class="fw-bold">Team Registration</h5>
                 <p class="text-white-50 small">Department CRs can submit their official squad list for the next batch.</p>
             </div>
-            <div class="glowCard col-md-4 text-center text-white h-100 p-3 rounded-3">
+            <div class="glowCard col-md-4 text-center text-white h-100 p-3 rounded-3" onclick="scrollB()">
                 <i class="bi bi-award-fill text-primary display-6"></i>
                 <h5 class="fw-bold">Leaderboard</h5>
                 <p class="text-white-50 small">Check out the top scoring departments and current group standings.</p>
@@ -148,7 +168,120 @@
         </div>
     </div>
 
+
+    <div class="m-5 p-5 rounded-4 rule-content" id="ruleLink">
+        <div class="d-flex flex-row justify-content-center align-items-center mb-5 p-3 border-bottom border-secondary">
+            <i class="bi bi-book-half text-primary mx-2" style="font-size: 5.6rem;"></i>
+            <div>
+                <h1 class="fw-bold glow-text mx-3">Tournament Rules & Guidelines</h1>
+                <p class="small mx-3 text-white-50">This rule book contains all the general guidelines, regulations and sports specific rules for the Sports Fest 2026</p>
+            </div>
+        </div>
+
+        <div class="mainRule">
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-1-circle-fill text-primary mx-2"></i> Only officially registered department students are eligible to participate.</p>
+                <i class="bi bi-people fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-2-circle-fill text-primary mx-2"></i> Each team must complete registration before the deadline.</p>
+                <i class="bi bi-clipboard2-minus-fill fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-3-circle-fill text-primary mx-2"></i> Every player must carry a valid student ID card during the match.</p>
+                <i class="bi bi-person-vcard fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-4-circle-fill text-primary mx-2"></i> Teams must report to the venue at least <strong>30 minutes</strong> before the scheduled match.</p>
+                <i class="bi bi-stopwatch fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-5-circle-fill text-primary mx-2"></i> Late arrival may result in a walkover decision by the organizing committee.</p>
+                <i class="bi bi-hourglass-split fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-6-circle-fill text-primary mx-2"></i> Fair play and respectful behavior are mandatory for all participants.</p>
+                <i class="bi bi-shield-check fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-7-circle-fill text-primary mx-2"></i> Any form of misconduct or violation of the rules may lead to disqualification.</p>
+                <i class="bi bi-exclamation-triangle fs-4 mx-2"></i>
+            </div>
+            <div class="py-2">
+                <p class="fs-4"><i class="bi bi-8-circle-fill text-primary mx-2"></i> The organizing committee reserves the right to modify the schedule or rules if necessary.</p>
+                <i class="bi bi-gear-fill fs-4 mx-2"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-4 rounded-4 custom-table m-5" id="leaderBoardR">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold m-0 text-white"><i class="bi bi-calendar3 text-primary me-2"></i>Point Table</h3>
+            <span class="rounded small fw-semibold bg-primary px-3 py-2">Season 2026</span>
+        </div>
+        <div class="">
+            <table class="table table-dark align-middle m-0">
+                <thead>
+                    <tr>
+                        <th>Dept. Name</th>
+                        <th>PI</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GD</th>
+                        <th>Pts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. CCE</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>3</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>2. CSE</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>3. EEE</td>
+                        <td>2</td>
+                        <td>0</td>
+                        <td>2</td>
+                        <td>1</td>
+                        <td>-3</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
     <script>
+        function scrollR(){
+            let scrollRule = document.getElementById("ruleLink");
+            scrollRule.scrollIntoView({behavior: "smooth"});
+        }
+
+        function scrollB(){
+            let scrollBoard = document.getElementById("leaderBoardR");
+            scrollBoard.scrollIntoView({behavior: "smooth"});
+        }
+
+        let accBtn = document.getElementById("acc");
+
+        accBtn.innerText = localStorage.getItem("accName");
+
         if (localStorage.getItem("isLoggedIn") !== "true") {
             alert('Access Denied! Please login first.');
             window.location.href = "index.html";
